@@ -1,19 +1,82 @@
-.popup {
+.popup__close-modal {
     background-color: rgba($color-black, .8);
-    width: 100%;
-    height: 100vh;
     position: fixed;
+    cursor: default;
     top: 0;
     left: 0;
-    z-index: 5000; 
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 4500;
+    -webkit-transition: opacity .5s, visibility 0s linear .5s;
+    transition: opacity .5s, visibility 0s linear .5s;            
+}
+
+.popup {
+    width: 100%;
+    //height: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+
+    background-color: rgba($color-black, .8);
+    //height: 100vh;
+    //position: fixed;
+    //top: 0;
+    //left: 0;
     opacity: 0;
     visibility: hidden;
     transition: all .3s;
+    z-index: 5000;
 
-    &:target {
+    @supports(-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)){
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+
+    &:target { 
         opacity: 1;
         visibility: visible;
     }
+
+    //WHYYYYYYYYYYY??????
+    &:target + .popup__close-modal {  
+        opacity: 1;
+        visibility: visible;
+        /* cancel visibility transition delay */
+        -webkit-transition-delay: 0s;
+        transition-delay: 0s;
+        //cursor: pointer;
+      }    
+
+    &__content {
+        background-color: $color-white;
+        width: 75%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.25);        
+        box-shadow: 0 2rem 4rem rgba($color-black, .2);
+        border-radius: .3rem;
+        display: table;
+        overflow: hidden;
+        opacity: 0;
+        transition: all .5s .2s;
+        z-index: 10000;
+
+        @include respond(tab-port) {
+            display: block;
+        }
+        @include respond(phone) {
+            width: 90%;
+            display: block;
+            position: relative;
+        }        
+        
+
+    }    
 
     &__close {
         &:link,
@@ -30,6 +93,7 @@
         &:hover {
             color: $color-primary;
         }
+
     }
 
     &:target &__content {
@@ -37,31 +101,6 @@
         transform: translate(-50%, -50%) scale(1);
     }
 
-    &__content {
-        background-color: $color-white;
-        width: 75%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.25);        
-        box-shadow: 0 2rem 4rem rgba($color-black, .2);
-        border-radius: .3rem;
-        display: table;
-        overflow: hidden;
-        opacity: 0;
-        transition: all .5s .2s;
-
-        @include respond(tab-port) {
-            display: block;
-        }
-        @include respond(phone) {
-            width: 90%;
-            display: block;
-            position: relative;
-        }        
-        
-
-    }
 
     &__left {
         width: 33.333333%;
