@@ -33,7 +33,12 @@ Grey dark 3: #999
     --color-white: #fff ;
 
     --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, .3);
+    --shadow-light: 0 2rem 6rem rgba(0, 0, 0, 0.06);
+    --line: .1rem solid var(--color-grey-light-2);
+
 }
+
+$bp-largest: 75em; // 1200px/16px
 
 * {
     margin: 0;
