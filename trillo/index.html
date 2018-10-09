@@ -39,9 +39,27 @@
                     </svg>
                     <span class="user-nav__notification">43</span>
                 </div>
-                <div class="user-nav__user">
+                <div class="user-nav__user user">
                     <img src="img/user.jpg" alt="User Photo" class="user-nav__user-photo">
                     <span class="user-nav__user-name">Leandro</span>
+                    <ul class="user__menu">
+                        <li class="user__item">
+                            <a href="#" class="user__link">
+                                <svg class="user__icon-menu">
+                                    <use xlink:href=img/sprite.svg#icon-home> </use>
+                                </svg>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+                        <li class="user__item">
+                            <a href="#" class="user__link">
+                                <svg class="user__icon-menu">
+                                    <use xlink:href=img/sprite.svg#icon-key> </use>
+                                </svg>
+                                <span>Messages</span>
+                            </a>
+                        </li>                        
+                    </ul>                    
                 </div>
             </nav>
         </div>
@@ -206,6 +224,9 @@
             </main>
         </div>
     </div>
+
+
+
 </body>
 
 </html>
